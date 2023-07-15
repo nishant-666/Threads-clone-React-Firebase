@@ -1,7 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Victor+Mono:wght@400;500;600;700&display=swap");
 
-@import url("./Sass/Feed.scss");
+@import url("./Sass/Threads.scss");
 @import url("./Sass/Login.scss");
+@import url("./Sass/BottomBar.scss");
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -10,11 +17,24 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #000000;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
+
+.flex {
+  display: flex;
+}
+
+.JC-SB {
+  gap: 150px;
+  justify-content: space-between;
+}
+
+.react-icon {
+  cursor: pointer;
 }

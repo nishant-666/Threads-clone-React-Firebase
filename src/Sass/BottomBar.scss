@@ -1,0 +1,16 @@
+.bottom-bar {
+  background-color: #212121;
+  color: white;
+  position: fixed;
+  bottom: 1em;
+  left: 1em;
+  padding: 1em;
+  border-radius: 1em;
+
+  display: flex;
+  gap: 60px;
+}
+
+.filled {
+  color: #ff8c59;
+}

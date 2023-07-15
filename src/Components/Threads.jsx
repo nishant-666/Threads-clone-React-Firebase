@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import SingleThread from "./SingleThread";
+import ThreadIcon from "../assets/Threads.png";
 
 export default function Threads() {
   let auth = getAuth();
@@ -15,10 +17,24 @@ export default function Threads() {
   }, []);
 
   return (
-    <div className="feed-main">
-      <h1>Threads</h1>
+    <div className="threads-main">
+      <div className="thread-icon-container">
+        <img src={ThreadIcon} className="thread-icon" />
+      </div>
+      <div className="single-threads">
+        <SingleThread />
+        <SingleThread />
+        <SingleThread />
+        <SingleThread />
 
-      <p>Here you will see all the threads..</p>
+        <SingleThread />
+        <SingleThread />
+        <SingleThread />
+        <SingleThread />
+        <SingleThread />
+        <SingleThread />
+        <SingleThread />
+      </div>
     </div>
   );
 }

@@ -8,9 +8,6 @@ export default function Profile() {
     console.log(await posts);
   };
 
-  useEffect(() => {
-    getData();
-  }, [posts]);
   return (
     <div>
       <h1>Profile</h1>
