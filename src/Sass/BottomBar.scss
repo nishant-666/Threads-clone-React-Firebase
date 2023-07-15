@@ -1,13 +1,12 @@
 .bottom-bar {
-  background-color: #212121;
+  background-color: black;
   color: white;
   position: fixed;
-  bottom: 1em;
-  left: 1em;
+  bottom: 0em;
   padding: 1em;
-  border-radius: 1em;
-
+  width: 100%;
   display: flex;
+  justify-content: center;
   gap: 60px;
 }
 

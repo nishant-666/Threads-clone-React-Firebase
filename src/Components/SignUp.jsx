@@ -3,6 +3,7 @@ import Input from "./Common/Input";
 import { signUp } from "../API/Auth";
 import IGLogo from "../assets/IGLogo.png";
 import { useNavigate } from "react-router-dom";
+import { createUser } from "../API/Firestore";
 import Toast from "./Common/Toast";
 
 export default function SignUp() {
@@ -16,10 +17,12 @@ export default function SignUp() {
   }
 
   async function handlesignUp() {
-    await signUp(inputs.email, inputs.password);
+    let response = await signUp(inputs.email, inputs.password);
+    createUser(inputs.name, response.user.email);
+    localStorage.setItem("username", inputs.name);
+    localStorage.setItem("userEmail", response.user.email);
     Toast("Sign Up Successful!", "success");
     navigate("/");
-    setInputs({ name: "", email: "", password: "" });
   }
 
   return (

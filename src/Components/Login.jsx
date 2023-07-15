@@ -20,6 +20,9 @@ export default function Login() {
 
   async function handlesignIn() {
     let response = await signIn(inputs.email, inputs.password);
+    console.log(response);
+    localStorage.setItem("username", inputs.name);
+    localStorage.setItem("userEmail", response.user.email);
     Toast("Log In Successful!", "success");
     setInputs({ email: "", password: "" });
   }

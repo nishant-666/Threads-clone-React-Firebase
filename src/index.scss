@@ -3,6 +3,7 @@
 @import url("./Sass/Threads.scss");
 @import url("./Sass/Login.scss");
 @import url("./Sass/BottomBar.scss");
+@import url("./Sass/CreateThread.scss");
 
 html,
 body {
@@ -36,5 +37,19 @@ body {
 }
 
 .react-icon {
+  cursor: pointer;
+}
+
+.logout-btn {
+  background-color: #212121;
+  height: 40px;
+  width: 140px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  outline: none;
+  border: 1px solid #ff8c59;
+  border-radius: 5px;
+  font-family: "Open Sans", sans-serif;
   cursor: pointer;
 }

@@ -7,7 +7,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 export default function BottomBar() {
   let navigate = useNavigate();
   let location = useLocation();
-  console.log(location.pathname);
+
   return (
     <div className="bottom-container">
       <div className="bottom-bar">
@@ -24,7 +24,10 @@ export default function BottomBar() {
         />
         <FiEdit
           size={40}
-          className={`react-icon ${location.pathname === "" ? "filled" : ""}`}
+          className={`react-icon ${
+            location.pathname === "/create-thread" ? "filled" : ""
+          }`}
+          onClick={() => navigate("/create-thread")}
         />
         <AiOutlineUser
           size={40}
