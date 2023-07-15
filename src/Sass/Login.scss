@@ -1,0 +1,49 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 95vh;
+
+  .Ig-logo {
+    width: 60px;
+    margin-bottom: 30px;
+  }
+
+  .common-input {
+    width: 300px;
+    height: 40px;
+    margin: 10px;
+    padding-left: 10px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid rgb(148, 148, 168);
+    font-size: 14px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 700;
+    color: rgb(207, 207, 207);
+  }
+
+  .common-input:focus {
+    border: 1px solid rgb(254, 254, 254);
+  }
+
+  .login-btn {
+    background-color: #0668e1;
+    outline: none;
+    border: none;
+    width: 310px;
+    height: 40px;
+    margin-top: 15px;
+    border-radius: 20px;
+    font-family: "Victor Mono", monospace;
+    cursor: pointer;
+  }
+}
+
+::placeholder {
+  font-size: 14px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
+  color: rgb(155, 155, 155);
+}
