@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import Input from "./Common/Input";
 import { signUp } from "../API/Auth";
 import IGLogo from "../assets/IGLogo.png";
+import { useNavigate } from "react-router-dom";
 import Toast from "./Common/Toast";
 
 export default function SignUp() {
+  let navigate = useNavigate();
   const [inputs, setInputs] = useState({});
+
   function handleInput(event) {
     let { name, value } = event.target;
     let input = { [name]: value };
@@ -13,8 +16,9 @@ export default function SignUp() {
   }
 
   async function handlesignUp() {
-    let response = await signUp(inputs.email, inputs.password);
+    await signUp(inputs.email, inputs.password);
     Toast("Sign Up Successful!", "success");
+    navigate("/");
     setInputs({ name: "", email: "", password: "" });
   }
 
