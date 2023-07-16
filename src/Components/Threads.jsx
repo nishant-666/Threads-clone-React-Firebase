@@ -25,11 +25,11 @@ export default function Threads() {
         <img src={ThreadIcon} className="thread-icon" />
       </div>
       <div className="single-threads">
-        {threads.map((thread) => (
-          <>
+        {threads.map((thread, index) => (
+          <div key={index}>
             <SingleThread thread={thread} />
             <Divider className="divider" />
-          </>
+          </div>
         ))}
       </div>
     </div>

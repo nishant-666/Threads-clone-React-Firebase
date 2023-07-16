@@ -5,6 +5,7 @@ import IGLogo from "../assets/IGLogo.png";
 import { useNavigate } from "react-router-dom";
 import { createUser } from "../API/Firestore";
 import Toast from "./Common/Toast";
+import { updateProfile } from "firebase/auth";
 
 export default function SignUp() {
   let navigate = useNavigate();
@@ -19,6 +20,7 @@ export default function SignUp() {
   async function handlesignUp() {
     let response = await signUp(inputs.email, inputs.password);
     createUser(inputs.name, response.user.email);
+    updateProfile(response.user, { displayName: inputs.name });
     localStorage.setItem("username", inputs.name);
     localStorage.setItem("userEmail", response.user.email);
     Toast("Sign Up Successful!", "success");

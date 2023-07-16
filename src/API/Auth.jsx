@@ -27,6 +27,8 @@ export const signIn = (email, password) => {
 
 export const logout = () => {
   try {
+    localStorage.removeItem("userEmail");
+    localStorage.removeItem("username");
     return signOut(auth);
   } catch (err) {
     console.log(err);

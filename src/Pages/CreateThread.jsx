@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { AiOutlineClose, AiFillCloseCircle } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { createThread } from "../API/Firestore";
+import { FirestoreContext } from "../Contexts/FirestoreContext";
 
 export default function CreateThread() {
+  let { currentUser } = useContext(FirestoreContext);
+  let currentUserID = currentUser[0]?.id;
+
   let userName = localStorage.getItem("username");
   let userEmail = localStorage.getItem("userEmail");
+
   const [threadData, setThreadData] = useState([
     {
       thread: "",
@@ -36,6 +41,7 @@ export default function CreateThread() {
 
   const postThread = async () => {
     let payload = {
+      currentUserID: currentUserID,
       name: userName,
       email: userEmail,
       threadData: threadData.map((item) => item.thread),
