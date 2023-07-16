@@ -13,7 +13,7 @@
 }
 
 .thread-card {
-  height: 30vh;
+  height: 40vh;
 
   .name,
   .timestamp {
@@ -23,7 +23,16 @@
 
   .description {
     margin-top: -10px;
+    margin-left: 30px;
     font-family: "Victor Mono", monospace;
+  }
+
+  .vertical-line {
+    border-left: 3px solid rgb(124, 121, 121);
+    height: 10px;
+    min-height: 10vh;
+    margin-left: -15px;
+    position: absolute;
   }
 
   .action-btns {

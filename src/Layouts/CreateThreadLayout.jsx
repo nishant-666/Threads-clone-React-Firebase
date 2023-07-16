@@ -6,9 +6,7 @@ export default function CreateThreadLayout() {
   return (
     <div>
       <CreateThread />
-      <div className="bottom-container">
-        <BottomBar />
-      </div>
+      <BottomBar />
     </div>
   );
 }

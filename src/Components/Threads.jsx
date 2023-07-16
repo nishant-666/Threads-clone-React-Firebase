@@ -4,6 +4,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { FirestoreContext } from "../Contexts/FirestoreContext";
 import SingleThread from "./SingleThread";
 import ThreadIcon from "../assets/Threads.png";
+import { Divider } from "antd";
 
 export default function Threads() {
   let { threads } = useContext(FirestoreContext);
@@ -25,7 +26,10 @@ export default function Threads() {
       </div>
       <div className="single-threads">
         {threads.map((thread) => (
-          <SingleThread thread={thread} />
+          <>
+            <SingleThread thread={thread} />
+            <Divider className="divider" />
+          </>
         ))}
       </div>
     </div>

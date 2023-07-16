@@ -15,7 +15,6 @@
     border: none;
     outline: none;
     font-family: "Open Sans", sans-serif;
-    margin-top: -15px;
     width: 300px;
     font-size: 16px;
 
@@ -54,4 +53,27 @@
 .disabled {
   color: #003576 !important;
   cursor: not-allowed !important;
+}
+
+.post-btn-container {
+  display: flex;
+  gap: 40px;
+}
+
+.delete-thread {
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+}
+
+.threads-area {
+  position: relative;
+  height: 50vh;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.threads-area::-webkit-scrollbar {
+  display: none;
 }
