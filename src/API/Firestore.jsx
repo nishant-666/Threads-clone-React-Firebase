@@ -4,6 +4,7 @@ import moment from "moment";
 
 import {
   addDoc,
+  updateDoc,
   collection,
   doc,
   setDoc,
@@ -99,4 +100,27 @@ export const getAllReplies = (threadID, setReplies) => {
   } catch (err) {
     console.log(err);
   }
+};
+
+export const getCurrentUserProfile = async (email, setCurrentProfile) => {
+  try {
+    let currentUserQuery = query(usersCollection, where("email", "==", email));
+    onSnapshot(currentUserQuery, (response) => {
+      setCurrentProfile(
+        response.docs.map((doc) => {
+          return { ...doc.data(), id: doc.id };
+        })
+      );
+    });
+  } catch (err) {
+    Toast(err, "error");
+  }
+};
+
+export const updateProfile = (currentID, payload) => {
+  let docToUpdate = doc(database, "users", currentID);
+
+  updateDoc(docToUpdate, payload);
+
+  Toast("Profile Updated", "success");
 };

@@ -1,0 +1,80 @@
+.profile-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70vh;
+
+  .profile-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 90px;
+    justify-content: center;
+  }
+  .profile-name {
+    font-family: "Victor Mono", monospace;
+  }
+}
+
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.upload-btn-wrapper input[type="file"] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+.profile-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-top: 30px;
+}
+
+.user-bio {
+  font-family: "Victor Mono", monospace;
+}
+
+.edit-profile {
+  width: 150px;
+  height: 40px;
+  margin-top: 10px;
+  outline: none;
+  background-color: black;
+  border: 1px solid rgb(66, 66, 66);
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.bio-edit {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  gap: 20px;
+}
+
+.bio-edit-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.bio-input {
+  width: 200px;
+  height: 40px;
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #212121;
+  outline: none;
+  border: 1px solid rgb(66, 66, 66);
+}
