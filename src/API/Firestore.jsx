@@ -124,3 +124,17 @@ export const updateProfile = (currentID, payload) => {
 
   Toast("Profile Updated", "success");
 };
+
+export const getCurrenProfileThreads = async (email, setCurrentThreads) => {
+  let currentThreadsQuery = query(
+    threadsCollection,
+    where("email", "==", email)
+  );
+  onSnapshot(currentThreadsQuery, (response) => {
+    setCurrentThreads(
+      response.docs.map((doc) => {
+        return { ...doc.data(), id: doc.id };
+      })
+    );
+  });
+};

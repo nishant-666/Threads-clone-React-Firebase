@@ -2,7 +2,7 @@ import { storage } from "../firebaseConfig";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import { updateProfile } from "./Firestore";
 
-export const uploadImage = (file, currentID) => {
+export const uploadImage = (file, currentID, setImageProgress) => {
   const picsRef = ref(storage, `${file.name}`);
   const uploadTask = uploadBytesResumable(picsRef, file);
 
@@ -13,7 +13,7 @@ export const uploadImage = (file, currentID) => {
         (snapshot.bytesTransferred / snapshot.totalBytes) * 100
       );
 
-      console.log(progress);
+      setImageProgress(progress);
     },
     (error) => {
       console.error(error);
@@ -21,6 +21,7 @@ export const uploadImage = (file, currentID) => {
     () => {
       getDownloadURL(uploadTask.snapshot.ref).then((response) => {
         updateProfile(currentID, { profileImage: response });
+        setImageProgress(0);
       });
     }
   );

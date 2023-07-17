@@ -3,6 +3,7 @@
   align-items: center;
   flex-direction: column;
   margin-bottom: 80px;
+  padding: 30px;
 }
 
 .thread-icon-container {
@@ -19,16 +20,20 @@
     cursor: pointer;
   }
 
+  .timestamp {
+    font-size: 10px;
+    margin-top: 20px;
+  }
+
   .name,
   .timestamp {
-    font-size: 20px;
     font-family: "Victor Mono", monospace;
   }
 
   .description {
     margin-top: -10px;
-    margin-left: 30px;
     font-family: "Victor Mono", monospace;
+    font-size: 12px;
   }
 
   .vertical-line {

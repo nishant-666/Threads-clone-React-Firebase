@@ -2,12 +2,13 @@
   background-color: black;
   color: white;
   position: fixed;
+  left: -1em;
   bottom: 0em;
   padding: 1em;
   width: 100%;
   display: flex;
   justify-content: center;
-  gap: 60px;
+  gap: 40px;
 }
 
 .filled {
