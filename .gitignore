@@ -9,6 +9,7 @@ lerna-debug.log*
 
 
 node_modules
+src/firebaseConfig.jsx
 dist
 dist-ssr
 *.local
@@ -25,4 +26,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-firebaseConfig.jsx
