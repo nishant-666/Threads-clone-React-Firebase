@@ -56,6 +56,10 @@ export default function Login() {
       <button className="login-btn" onClick={handlesignIn}>
         Log In
       </button>
+
+      <p className="link" onClick={() => navigate("/sign-up")}>
+        Create an Account
+      </p>
     </div>
   );
 }

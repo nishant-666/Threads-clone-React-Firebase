@@ -47,3 +47,10 @@
 .common-input:focus {
   border: 1px solid rgb(254, 254, 254);
 }
+
+.link {
+  font-family: "Victor Mono", monospace;
+
+  border-bottom: 1px solid rgb(107, 107, 107);
+  cursor: pointer;
+}
