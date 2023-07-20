@@ -49,7 +49,7 @@ export default function Profile() {
     await setProfileBio("");
     await setBioEdit(false);
   };
-  console.log(currentProfileThreads);
+
   let profileName = currentProfile[0]?.name;
   let profileImage = currentProfile[0]?.profileImage;
   let profileId = currentProfile[0]?.id;
