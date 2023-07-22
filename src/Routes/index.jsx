@@ -4,6 +4,7 @@ import SignUpPage from "../Pages/SignUpPage";
 import ThreadLayout from "../Layouts/ThreadLayout";
 import ProfileLayout from "../Layouts/ProfileLayout";
 import CreateThreadLayout from "../Layouts/CreateThreadLayout";
+import NotificationLayout from "../Layouts/NotificationLayout";
 
 export const router = createBrowserRouter([
   {
@@ -25,5 +26,9 @@ export const router = createBrowserRouter([
   {
     path: "/create-thread",
     element: <CreateThreadLayout />,
+  },
+  {
+    path: "/notifications",
+    element: <NotificationLayout />,
   },
 ]);
