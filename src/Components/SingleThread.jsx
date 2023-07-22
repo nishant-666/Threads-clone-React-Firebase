@@ -43,7 +43,7 @@ export default function SingleThread({ thread }) {
           <ActionBtns
             userId={currentUserID}
             likedFor={thread?.currentUserID}
-            threadName={thread?.threadData}
+            threadData={thread?.threadData}
             threadID={thread.id}
             currentUserName={currentUserName}
           />

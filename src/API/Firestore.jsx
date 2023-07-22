@@ -38,26 +38,29 @@ export const createThread = (payload) => {
 };
 
 export const likeThread = (
-  likedBy,
   userId,
+  recipientUserId,
   threadData,
   currentUserID,
   threadID,
   liked
 ) => {
   try {
-    let docToLike = doc(likeRef, `${likedBy}_${threadID}`);
-    let docToNotify = doc(notificationCollection, `${likedBy}_${threadID}`);
+    let docToLike = doc(likeRef, `${userId}_${threadID}`);
+    let docToNotify = doc(
+      notificationCollection,
+      `${recipientUserId}_${threadID}`
+    );
     if (liked) {
       deleteDoc(docToLike);
       deleteDoc(docToNotify);
     } else {
-      setDoc(docToLike, { likedBy, threadID });
+      setDoc(docToLike, { userId, threadID });
 
-      if (currentUserID !== userId) {
+      if (currentUserID !== recipientUserId) {
         const notificationData = {
           userName: auth.currentUser.displayName,
-          recipientUserId: userId,
+          recipientUserId: recipientUserId,
           senderUserEmail: auth.currentUser.email,
           senderUserId: auth.currentUser.uid,
           type: "like",
@@ -66,11 +69,12 @@ export const likeThread = (
           timestamp: moment().format(),
           isRead: false,
         };
-        addDoc(notificationCollection, notificationData);
+
+        setDoc(docToNotify, notificationData);
       }
     }
   } catch (err) {
-    Toast(err, "error");
+    console.log(err, "error");
   }
 };
 
@@ -82,7 +86,7 @@ export const getLikesByUser = (userId, threadID, setLiked, setLikesCount) => {
       let likes = response.docs.map((doc) => doc.data());
       let likesCount = likes?.length;
 
-      const isLiked = likes.some((like) => like.likedBy === userId);
+      const isLiked = likes.some((like) => like.userId === userId);
 
       setLikesCount(likesCount);
       setLiked(isLiked);
@@ -94,7 +98,7 @@ export const getLikesByUser = (userId, threadID, setLiked, setLikesCount) => {
 
 export const postReplies = async (
   likedFor,
-  threadName,
+  threadData,
   currentUserID,
   threadID,
   reply,
@@ -117,7 +121,7 @@ export const postReplies = async (
         senderUserId: auth.currentUser.uid,
         type: "comment",
         threadID: threadID,
-        threadData: threadName,
+        threadData: threadData,
         timestamp: moment().format(),
         isRead: false,
       };

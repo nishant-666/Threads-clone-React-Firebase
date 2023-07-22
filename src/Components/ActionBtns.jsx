@@ -11,7 +11,7 @@ import { postReplies, getAllReplies } from "../API/Firestore";
 export default function ActionBtns({
   userId,
   likedFor,
-  threadName,
+  threadData,
   threadID,
   currentUserName,
 }) {
@@ -21,12 +21,12 @@ export default function ActionBtns({
   const [reply, setReply] = useState("");
   const [replies, setReplies] = useState([]);
   let { currentUser } = useContext(FirestoreContext);
-
+  console.log(userId);
   const handleLike = () => {
     likeThread(
       userId,
       likedFor,
-      threadName,
+      threadData,
       currentUser[0].id,
       threadID,
       liked
@@ -41,7 +41,7 @@ export default function ActionBtns({
   const addComment = () => {
     postReplies(
       likedFor,
-      threadName,
+      threadData,
       currentUser[0].id,
       threadID,
       reply,
