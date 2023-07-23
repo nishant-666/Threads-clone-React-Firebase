@@ -9,7 +9,7 @@ export default function NotificationsPage() {
   let isNotifEmpty = location?.state?.isRead;
 
   if (isNotifEmpty === 0)
-    return <h1 className="no-notifications">No Notifications</h1>;
+    return <h1 className="no-notifications">No New Notifications</h1>;
   return (
     <div>
       <ul className="notification-ul">

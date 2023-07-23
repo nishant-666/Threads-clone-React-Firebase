@@ -209,10 +209,10 @@ export const getCurrenProfileThreads = async (email, setCurrentThreads) => {
   });
 };
 
-export const getNotifications = async (recipientUserId, setNotifications) => {
+export const getNotifications = async (userId, setNotifications) => {
   const getNotifQuery = query(
     notificationCollection,
-    where("recipientUserId", "==", recipientUserId),
+    where("recipientUserId", "==", userId),
     orderBy("timestamp", "desc")
   );
   onSnapshot(getNotifQuery, (response) => {
