@@ -67,13 +67,18 @@ export const getLikesByUser = (userId, threadID, setLiked, setLikesCount) => {
   }
 };
 
-export const postReplies = async (threadID, reply, timeStamp, name) => {
+export const postReplies = async (
+  threadID,
+  reply,
+  timeStamp,
+  currentUserName
+) => {
   try {
     await addDoc(repliesRef, {
       threadID,
       reply,
       timeStamp,
-      name,
+      currentUserName,
     });
   } catch (err) {
     Toast(err, "error");
