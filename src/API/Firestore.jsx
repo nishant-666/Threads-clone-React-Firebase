@@ -41,7 +41,6 @@ export const likeThread = (
   userId,
   recipientUserId,
   threadData,
-  currentUserID,
   threadID,
   liked
 ) => {
@@ -51,13 +50,14 @@ export const likeThread = (
       notificationCollection,
       `${recipientUserId}_${threadID}`
     );
+
     if (liked) {
       deleteDoc(docToLike);
       deleteDoc(docToNotify);
     } else {
       setDoc(docToLike, { userId, threadID });
 
-      if (currentUserID !== recipientUserId) {
+      if (userId !== recipientUserId) {
         const notificationData = {
           userName: auth.currentUser.displayName,
           recipientUserId: recipientUserId,
@@ -69,7 +69,6 @@ export const likeThread = (
           timestamp: moment().format(),
           isRead: false,
         };
-
         setDoc(docToNotify, notificationData);
       }
     }
@@ -97,9 +96,9 @@ export const getLikesByUser = (userId, threadID, setLiked, setLikesCount) => {
 };
 
 export const postReplies = async (
-  likedFor,
+  recipientUserId,
   threadData,
-  currentUserID,
+  userId,
   threadID,
   reply,
   timeStamp,
@@ -113,10 +112,10 @@ export const postReplies = async (
       name: currentUserName,
     });
 
-    if (currentUserID != likedFor) {
+    if (userId != recipientUserId) {
       const notificationData = {
         userName: auth.currentUser.displayName,
-        recipientUserId: likedFor,
+        recipientUserId: recipientUserId,
         senderUserEmail: auth.currentUser.email,
         senderUserId: auth.currentUser.uid,
         type: "comment",

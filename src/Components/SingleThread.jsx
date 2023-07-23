@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import ActionBtns from "./ActionBtns";
 import { formatTime } from "../Helpers/formatTime";
 import { FirestoreContext } from "../Contexts/FirestoreContext";
@@ -42,7 +42,7 @@ export default function SingleThread({ thread }) {
         <div className="action-btns">
           <ActionBtns
             userId={currentUserID}
-            likedFor={thread?.currentUserID}
+            recipientUserId={thread?.currentUserID}
             threadData={thread?.threadData}
             threadID={thread.id}
             currentUserName={currentUserName}

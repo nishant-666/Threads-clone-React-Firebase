@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { AiOutlineHeart, AiOutlineComment, AiFillHeart } from "react-icons/ai";
 import { likeThread, getLikesByUser } from "../API/Firestore";
-import { FirestoreContext } from "../Contexts/FirestoreContext";
+
 import { PlusOutlined } from "@ant-design/icons";
 import CommonButton from "./Common/Button";
 import Input from "./Common/Input";
@@ -10,7 +10,7 @@ import { postReplies, getAllReplies } from "../API/Firestore";
 
 export default function ActionBtns({
   userId,
-  likedFor,
+  recipientUserId,
   threadData,
   threadID,
   currentUserName,
@@ -20,17 +20,9 @@ export default function ActionBtns({
   const [showCommentBox, setShowCommentBox] = useState(false);
   const [reply, setReply] = useState("");
   const [replies, setReplies] = useState([]);
-  let { currentUser } = useContext(FirestoreContext);
-  console.log(userId);
+
   const handleLike = () => {
-    likeThread(
-      userId,
-      likedFor,
-      threadData,
-      currentUser[0].id,
-      threadID,
-      liked
-    );
+    likeThread(userId, recipientUserId, threadData, threadID, liked);
   };
 
   const getReplies = (event) => {
@@ -40,9 +32,9 @@ export default function ActionBtns({
 
   const addComment = () => {
     postReplies(
-      likedFor,
+      recipientUserId,
       threadData,
-      currentUser[0].id,
+      userId,
       threadID,
       reply,
       getCurrentTimeStamp("LLL"),
