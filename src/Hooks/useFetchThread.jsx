@@ -10,6 +10,7 @@ export default function useFetchThread(threadID) {
     setLoading(true);
     try {
       getSingleThread(threadID, setSingleThread);
+      setLoading(false);
     } catch (error) {
       setError(true);
     }
@@ -19,5 +20,5 @@ export default function useFetchThread(threadID) {
     fetchThreads();
   }, [threadID]);
 
-  return { singleThread };
+  return { singleThread, isLoading };
 }

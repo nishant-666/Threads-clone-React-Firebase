@@ -4,6 +4,28 @@
   flex-direction: column;
   margin-bottom: 80px;
   padding: 30px;
+
+  .single-threads {
+    width: 100%;
+  }
+}
+
+.single-threads::-webkit-scrollbar {
+  display: none;
+}
+
+.single-threads ::-moz-scrollbar {
+  display: none;
+}
+
+.single-threads {
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-color: transparent transparent; /*just hides the scrollbar for firefox */
+}
+
+::-webkit-scrollbar {
+  width: 0;
 }
 
 .thread-icon-container {
@@ -15,6 +37,7 @@
 
 .thread-card {
   height: auto;
+  width: 100%;
   cursor: pointer;
   .name {
     font-size: 1.4rem;
