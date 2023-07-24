@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { FirestoreContext } from "../Contexts/FirestoreContext";
@@ -19,18 +19,22 @@ export default function Threads() {
     });
   }, []);
 
+  useEffect(() => {}, []);
+
   return (
     <div className="threads-main">
       <div className="thread-icon-container">
-        <img src={ThreadIcon} className="thread-icon" />
+        <img loading="lazy" src={ThreadIcon} className="thread-icon" />
       </div>
       <div className="single-threads">
-        {threads.map((thread, index) => (
-          <div key={index}>
-            <SingleThread thread={thread} />
-            <Divider className="divider" />
-          </div>
-        ))}
+        {threads.map((thread, index) => {
+          return (
+            <div key={index}>
+              <SingleThread thread={thread} />
+              <Divider className="divider" />
+            </div>
+          );
+        })}
       </div>
     </div>
   );

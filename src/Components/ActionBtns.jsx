@@ -1,13 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { AiOutlineHeart, AiOutlineComment, AiFillHeart } from "react-icons/ai";
 import { likeThread, getLikesByUser } from "../API/Firestore";
+
 import { PlusOutlined } from "@ant-design/icons";
 import CommonButton from "./Common/Button";
 import Input from "./Common/Input";
 import { getCurrentTimeStamp } from "../Helpers/useMoment";
 import { postReplies, getAllReplies } from "../API/Firestore";
 
-export default function ActionBtns({ userId, threadID, currentUserName }) {
+export default function ActionBtns({
+  userId,
+  recipientUserId,
+  threadData,
+  threadID,
+  currentUserName,
+}) {
   const [liked, setLiked] = useState(false);
   const [likesCount, setLikesCount] = useState(0);
   const [showCommentBox, setShowCommentBox] = useState(false);
@@ -15,7 +22,7 @@ export default function ActionBtns({ userId, threadID, currentUserName }) {
   const [replies, setReplies] = useState([]);
 
   const handleLike = () => {
-    likeThread(userId, threadID, liked);
+    likeThread(userId, recipientUserId, threadData, threadID, liked);
   };
 
   const getReplies = (event) => {
@@ -24,7 +31,15 @@ export default function ActionBtns({ userId, threadID, currentUserName }) {
   };
 
   const addComment = () => {
-    postReplies(threadID, reply, getCurrentTimeStamp("LLL"), currentUserName);
+    postReplies(
+      recipientUserId,
+      threadData,
+      userId,
+      threadID,
+      reply,
+      getCurrentTimeStamp("LLL"),
+      currentUserName
+    );
     setReply("");
   };
 

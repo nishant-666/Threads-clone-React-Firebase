@@ -8,9 +8,38 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  gap: 40px;
+  gap: 35px;
 }
 
 .filled {
   color: #ff8c59;
+}
+
+.notification-icon {
+  position: relative;
+  cursor: pointer;
+}
+
+.active-notifications {
+  position: absolute;
+  top: -13px;
+  right: -13px;
+  background-color: #e65100;
+  color: whitesmoke;
+  border-radius: 50%;
+  padding: 4px;
+  font-size: 12px;
+  min-width: 15px;
+  height: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Victor Mono", monospace;
+}
+
+.no-notifications {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
 }

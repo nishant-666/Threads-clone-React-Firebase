@@ -10,26 +10,36 @@ export default function SingleThread({ thread }) {
   let currentUserID = currentUser[0]?.id;
   let currentUserName = currentUser[0]?.name;
 
+  const openThread = () => {
+    navigate("/thread-details", {
+      state: {
+        threadID: thread?.id,
+      },
+    });
+  };
+
   return (
     <>
-      <div className="thread-card">
+      <div className="thread-card" onClick={openThread}>
         <div className="flex JC-SB">
           <div className="vertical-line"></div>
-          <p
-            className="name"
-            onClick={() =>
-              navigate("/profile", {
-                state: {
-                  currentEmail: thread.email,
-                  currentID: thread.currentUserID,
-                },
-              })
-            }
-          >
-            {thread.name}
-          </p>
+          <div>
+            <p
+              className="name"
+              // onClick={() =>
+              //   navigate("/profile", {
+              //     state: {
+              //       currentEmail: thread.email,
+              //       currentID: thread.currentUserID,
+              //     },
+              //   })
+              // }
+            >
+              {thread.name}
+            </p>
 
-          <p className="timestamp">{formatTime(thread.timestamp)}</p>
+            <p className="timestamp">{formatTime(thread.timestamp)}</p>
+          </div>
         </div>
         <div className="description">
           {thread.threadData.map((thread, index) => (
@@ -42,6 +52,8 @@ export default function SingleThread({ thread }) {
         <div className="action-btns">
           <ActionBtns
             userId={currentUserID}
+            recipientUserId={thread?.currentUserID}
+            threadData={thread?.threadData}
             threadID={thread.id}
             currentUserName={currentUserName}
           />

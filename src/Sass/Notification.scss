@@ -1,0 +1,47 @@
+.notification-ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  margin-top: 80px;
+  border-top: 1px solid rgb(57, 57, 57);
+  margin-bottom: 80px;
+}
+
+.notification-list {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+  cursor: pointer;
+  margin: 0px;
+  padding: 10px 20px;
+  border-bottom: 1px solid rgb(57, 57, 57);
+}
+
+.active {
+  background-color: rgb(33, 33, 33);
+}
+
+.notification-image {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.username {
+  font-family: "Victor Mono", monospace;
+}
+
+.thread-description {
+  font-family: "Victor Mono", monospace;
+  font-size: 25px;
+  margin-top: 0px;
+}
+
+.timestamp {
+  font-family: "Victor Mono", monospace;
+  font-size: 15px;
+  margin-top: 0px;
+}

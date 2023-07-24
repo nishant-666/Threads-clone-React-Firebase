@@ -94,6 +94,7 @@ export default function Profile() {
           <div className="upload-btn-wrapper">
             {profileImage ? (
               <img
+                loading="lazy"
                 onChange={getImage}
                 src={profileImage}
                 className="profile-image"
