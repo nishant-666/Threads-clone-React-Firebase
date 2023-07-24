@@ -36,7 +36,7 @@ export default function Login() {
 
   return (
     <div className="login-container">
-      <img className="Ig-logo" src={IGLogo} />
+      <img className="Ig-logo" loading="lazy" src={IGLogo} />
       <Input
         placeholder="Enter your Email"
         name="email"

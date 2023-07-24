@@ -1,0 +1,54 @@
+.thread-details {
+  margin-bottom: 80px;
+  .thread-header {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    padding: 20px 30px;
+
+    h2 {
+      font-family: "Victor Mono", monospace;
+    }
+    p {
+      font-family: "Victor Mono", monospace;
+      font-size: 1.4rem;
+    }
+  }
+
+  .thread-card {
+    font-family: "Victor Mono", monospace;
+    width: auto;
+    border-top: 1px solid rgb(59, 59, 59);
+    border-bottom: 1px solid rgb(59, 59, 59);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+
+    .thread-timestamp {
+      font-size: 0.9rem;
+    }
+
+    .thread-currentimg {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-top: 20px;
+    }
+
+    .thread-meta {
+      display: flex;
+      gap: 20px;
+    }
+
+    .thread-content {
+      padding: 20px 30px;
+      margin-top: -40px;
+
+      .thread-thread {
+        font-size: 1.1rem;
+      }
+    }
+  }
+}

@@ -24,7 +24,7 @@ export default function Threads() {
   return (
     <div className="threads-main">
       <div className="thread-icon-container">
-        <img src={ThreadIcon} className="thread-icon" />
+        <img loading="lazy" src={ThreadIcon} className="thread-icon" />
       </div>
       <div className="single-threads">
         {threads.map((thread, index) => {

@@ -229,3 +229,15 @@ export const readNotifications = async (id) => {
 
   updateDoc(docToUpdate, { isRead: true });
 };
+
+export const getSingleThread = async (threadID, setSingleThread) => {
+  try {
+    let currentThread = doc(threadsCollection, threadID);
+
+    await onSnapshot(currentThread, (response) => {
+      setSingleThread(response.data());
+    });
+  } catch (err) {
+    Toast(err, "error");
+  }
+};

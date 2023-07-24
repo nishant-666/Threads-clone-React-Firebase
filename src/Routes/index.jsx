@@ -5,6 +5,7 @@ import ThreadLayout from "../Layouts/ThreadLayout";
 import ProfileLayout from "../Layouts/ProfileLayout";
 import CreateThreadLayout from "../Layouts/CreateThreadLayout";
 import NotificationLayout from "../Layouts/NotificationLayout";
+import SingleThreadLayout from "../Layouts/SingleThreadLayout";
 
 export const router = createBrowserRouter([
   {
@@ -30,5 +31,9 @@ export const router = createBrowserRouter([
   {
     path: "/notifications",
     element: <NotificationLayout />,
+  },
+  {
+    path: "/thread-details",
+    element: <SingleThreadLayout />,
   },
 ]);

@@ -2,16 +2,23 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  margin-top: 70px;
+  margin-top: 80px;
+  border-top: 1px solid rgb(57, 57, 57);
+  margin-bottom: 80px;
 }
 
 .notification-list {
-  border-bottom: 1px solid rgb(57, 57, 57);
-  margin-right: 40px;
   display: flex;
   align-items: flex-start;
   gap: 30px;
   cursor: pointer;
+  margin: 0px;
+  padding: 10px 20px;
+  border-bottom: 1px solid rgb(57, 57, 57);
+}
+
+.active {
+  background-color: rgb(33, 33, 33);
 }
 
 .notification-image {

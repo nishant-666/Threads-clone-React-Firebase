@@ -22,7 +22,7 @@ export default function BottomBar() {
       <BiHomeAlt
         size={40}
         className={`react-icon ${
-          location.pathname === "/threads" ? "filled" : ""
+          location.pathname.includes("/thread") ? "filled" : ""
         }`}
         onClick={() => navigate("/threads")}
       />
