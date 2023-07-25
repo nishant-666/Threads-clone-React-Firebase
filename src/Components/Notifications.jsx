@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { formatTime } from "../Helpers/formatTime";
-import { getUserByID } from "../API/Firestore";
+import { getUserByEmail } from "../API/Firestore";
 import { readNotifications } from "../API/Firestore";
 import { useNavigate } from "react-router-dom";
 
@@ -20,8 +20,9 @@ export default function Notifications({ notification }) {
   };
 
   useEffect(() => {
-    getUserByID(notification.senderUserEmail, setCurrentProfile);
-  }, []);
+    getUserByEmail(notification?.senderUserEmail, setCurrentProfile);
+  }, [notification.senderUserEmail]);
+
   return (
     <>
       <div

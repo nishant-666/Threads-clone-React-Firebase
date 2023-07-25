@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import useFetchThread from "../Hooks/useFetchThread";
 import { formatTime } from "../Helpers/formatTime";
 import { BiArrowBack } from "react-icons/bi";
-import { getUserByID } from "../API/Firestore";
+import { getUserByEmail } from "../API/Firestore";
 import Spinner from "./Common/Loader";
 
 export default function ThreadDetail() {
@@ -14,7 +14,7 @@ export default function ThreadDetail() {
   const [currentProfile, setCurrentProfile] = useState([]);
 
   useEffect(() => {
-    getUserByID(singleThread?.email, setCurrentProfile);
+    getUserByEmail(singleThread?.email, setCurrentProfile);
   }, [singleThread?.email]);
 
   if (isLoading) return <Spinner />;

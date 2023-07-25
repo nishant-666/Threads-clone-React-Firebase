@@ -169,12 +169,20 @@ export const getCurrentUserProfile = async (email, setCurrentProfile) => {
   }
 };
 
-export const getUserByID = async (userEmail, setCurrentProfile) => {
+export const getUserByID = async (id, setCurrentProfile) => {
   try {
-    let currentUserQuery = query(
-      usersCollection,
-      where("email", "==", userEmail)
-    );
+    let currentUser = doc(usersCollection, id);
+    await onSnapshot(currentUser, (response) => {
+      setCurrentProfile(response.data());
+    });
+  } catch (err) {
+    Toast(err, "error");
+  }
+};
+
+export const getUserByEmail = async (email, setCurrentProfile) => {
+  try {
+    let currentUserQuery = query(usersCollection, where("email", "==", email));
     onSnapshot(currentUserQuery, (response) => {
       setCurrentProfile(
         response.docs.map((doc) => {

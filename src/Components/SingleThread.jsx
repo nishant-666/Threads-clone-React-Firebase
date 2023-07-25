@@ -1,15 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ActionBtns from "./ActionBtns";
 import { formatTime } from "../Helpers/formatTime";
 import { FirestoreContext } from "../Contexts/FirestoreContext";
 import { useNavigate } from "react-router-dom";
+import { getUserByID } from "../API/Firestore";
 
 export default function SingleThread({ thread }) {
   let navigate = useNavigate();
   let { currentUser } = useContext(FirestoreContext);
   let currentUserID = currentUser[0]?.id;
   let currentUserName = currentUser[0]?.name;
-
+  const [currentProfile, setProfile] = useState({});
   const openThread = () => {
     navigate("/thread-details", {
       state: {
@@ -18,45 +19,46 @@ export default function SingleThread({ thread }) {
     });
   };
 
+  const fetchSingleUser = async () => {
+    try {
+      await getUserByID(thread?.currentUserID, setProfile);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchSingleUser();
+  }, [thread?.currentUserID]);
+
   return (
     <>
-      <div className="thread-card" onClick={openThread}>
-        <div className="flex JC-SB">
-          <div className="vertical-line"></div>
-          <div>
-            <p
-              className="name"
-              // onClick={() =>
-              //   navigate("/profile", {
-              //     state: {
-              //       currentEmail: thread.email,
-              //       currentID: thread.currentUserID,
-              //     },
-              //   })
-              // }
-            >
-              {thread.name}
-            </p>
-
-            <p className="timestamp">{formatTime(thread.timestamp)}</p>
+      <div className="thread-card">
+        <img className="thread-user-image" src={currentProfile?.profileImage} />
+        <div>
+          <div className="flex JC-SB">
+            <div>
+              <p onClick={openThread} className="name">
+                {currentProfile.name}
+              </p>
+              <p className="timestamp">{formatTime(thread.timestamp)}</p>
+            </div>
           </div>
-        </div>
-        <div className="description">
-          {thread.threadData.map((thread, index) => (
-            <p key={index}>{thread}</p>
-          ))}
-        </div>
+          <div className="description">
+            {thread.threadData.map((thread, index) => (
+              <p key={index}>{thread}</p>
+            ))}
+          </div>
 
-        {/* <p className="hashtags">#hashtags</p> */}
-
-        <div className="action-btns">
-          <ActionBtns
-            userId={currentUserID}
-            recipientUserId={thread?.currentUserID}
-            threadData={thread?.threadData}
-            threadID={thread.id}
-            currentUserName={currentUserName}
-          />
+          <div className="action-btns">
+            <ActionBtns
+              userId={currentUserID}
+              recipientUserId={thread?.currentUserID}
+              threadData={thread?.threadData}
+              threadID={thread.id}
+              currentUserName={currentUserName}
+            />
+          </div>
         </div>
       </div>
     </>
