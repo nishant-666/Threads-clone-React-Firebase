@@ -62,7 +62,7 @@ export default function Profile() {
           <h2 className="profile-name">{profileName}</h2>
           <p className="user-bio">
             {profilebio}{" "}
-            {localEmail === currentEmail && profilebio ? (
+            {/* {localEmail === currentEmail && profilebio ? (
               <AiOutlineEdit
                 size={25}
                 className="react-icon"
@@ -70,7 +70,7 @@ export default function Profile() {
               />
             ) : (
               <></>
-            )}
+            )} */}
           </p>
         </div>
         {/* {isBioEdit ? (

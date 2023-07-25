@@ -15,14 +15,14 @@
       height: 6rem;
       object-fit: cover;
       border-radius: 50%;
-      margin-top: 100px;
+      margin-top: 60px;
     }
     .profile-name {
       font-family: "Victor Mono", monospace;
     }
     .user-bio {
       font-family: "Victor Mono", monospace;
-      margin-top: -20px;
+      margin-top: -15px;
     }
   }
 
@@ -42,7 +42,7 @@
   position: absolute;
   overflow: hidden;
   right: 20px;
-  margin-top: 80px;
+  margin-top: 40px;
 }
 
 .upload-btn-wrapper input[type="file"] {
@@ -65,13 +65,13 @@
   font-size: 16px;
 }
 
-.bio-edit {
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  height: 40px;
-  gap: 20px;
-}
+// .bio-edit {
+//   display: flex;
+//   align-items: flex-start;
+//   flex-direction: column;
+//   height: 40px;
+//   gap: 20px;
+// }
 
 .bio-edit-container {
   display: flex;
