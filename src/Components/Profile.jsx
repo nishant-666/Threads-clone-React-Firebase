@@ -59,8 +59,9 @@ export default function Profile() {
     <div className="profile-main">
       <div className="profile-header">
         <div className="bio-edit">
-          <h2 className="profile-name">
-            {profileName}{" "}
+          <h2 className="profile-name">{profileName}</h2>
+          <p className="user-bio">
+            {profilebio}{" "}
             {localEmail === currentEmail && profilebio ? (
               <AiOutlineEdit
                 size={25}
@@ -70,46 +71,40 @@ export default function Profile() {
             ) : (
               <></>
             )}
-          </h2>
-          <p className="user-bio">{profilebio}</p>
-
-          {isBioEdit ? (
-            <div className="bio-edit-container">
-              <input
-                className="bio-input"
-                value={profileBio}
-                onChange={(event) => setProfileBio(event.target.value)}
-              />
-
-              <button className="edit-profile" onClick={updateUser}>
-                Save Bio
-              </button>
-            </div>
-          ) : (
-            <></>
-          )}
+          </p>
         </div>
+        {/* {isBioEdit ? (
+          <div className="bio-edit-container">
+            <input
+              className="bio-input"
+              value={profileBio}
+              onChange={(event) => setProfileBio(event.target.value)}
+            />
 
-        <div>
-          <div className="upload-btn-wrapper">
-            {profileImage ? (
-              <img
-                onChange={getImage}
-                src={profileImage}
-                className="profile-image"
-              />
-            ) : profilebio ? (
-              <Button
-                className="upload-btn"
-                type="primary"
-                shape="circle"
-                icon={<UploadOutlined />}
-              />
-            ) : (
-              <></>
-            )}
-            <input type="file" name="myfile" onChange={getImage} />
+            <button className="edit-profile" onClick={updateUser}>
+              Save Bio
+            </button>
           </div>
+        ) : (
+          <></>
+        )} */}
+        <div className="image-section">
+          <div className="upload-btn-wrapper">
+            <Button
+              className="upload-btn"
+              type="primary"
+              shape="circle"
+              icon={<UploadOutlined />}
+            />
+
+            <input type="file" name="upload" onChange={getImage} />
+          </div>
+
+          <img
+            onChange={getImage}
+            src={profileImage}
+            className="profile-image"
+          />
           <div className="progress-bar">
             <ProgressBar imageProgress={imageProgress} />
           </div>
@@ -120,7 +115,6 @@ export default function Profile() {
         {currentProfileThreads.map((thread, index) => (
           <div key={index}>
             <SingleThread thread={thread} />
-            <Divider className="divider" />
           </div>
         ))}
       </div>

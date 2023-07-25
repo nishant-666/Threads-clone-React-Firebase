@@ -1,54 +1,56 @@
 .profile-main {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-direction: column;
   align-items: center;
-  height: auto;
-  margin-right: 30px;
 
-  .profile-threads {
-    margin-bottom: 40px;
-    border: 1px solid #212121;
-    padding: 20px;
-    margin-top: 80px;
-  }
   .profile-header {
-    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin-left: 50px;
-    margin-bottom: 30px;
+    justify-content: space-between;
+    gap: 30px;
+    width: 80%;
+    .profile-image {
+      width: 6rem;
+      height: 6rem;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-top: 100px;
+    }
+    .profile-name {
+      font-family: "Victor Mono", monospace;
+    }
+    .user-bio {
+      font-family: "Victor Mono", monospace;
+      margin-top: -20px;
+    }
   }
-  .profile-name {
-    font-family: "Victor Mono", monospace;
+
+  .profile-threads {
+    margin-bottom: 60px;
+    padding: 20px;
+    margin-top: 0px;
+    width: 80%;
   }
+}
+
+.image-section {
+  position: relative;
 }
 
 .upload-btn-wrapper {
-  position: relative;
-  overflow: hidden;
-}
-
-.upload-btn-wrapper input[type="file"] {
-  font-size: 100px;
   position: absolute;
-  left: 0;
-  top: 40px;
-  opacity: 0;
-}
-
-.profile-image {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 50%;
+  overflow: hidden;
+  right: 20px;
   margin-top: 80px;
 }
 
-.user-bio {
-  font-family: "Victor Mono", monospace;
-  margin-top: -20px;
+.upload-btn-wrapper input[type="file"] {
+  font-size: 50px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
 }
 
 .edit-profile {
