@@ -7,6 +7,7 @@ import CommonButton from "./Common/Button";
 import Input from "./Common/Input";
 import { getCurrentTimeStamp } from "../Helpers/useMoment";
 import { postReplies, getAllReplies } from "../API/Firestore";
+import ModalComponent from "./Common/Modal";
 
 export default function ActionBtns({
   userId,
@@ -20,7 +21,7 @@ export default function ActionBtns({
   const [showCommentBox, setShowCommentBox] = useState(false);
   const [reply, setReply] = useState("");
   const [replies, setReplies] = useState([]);
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const handleLike = () => {
     likeThread(userId, recipientUserId, threadData, threadID, liked);
   };
@@ -41,6 +42,8 @@ export default function ActionBtns({
       currentUserName
     );
     setReply("");
+    setShowCommentBox(false);
+    setIsModalOpen(false);
   };
 
   useEffect(() => {
@@ -51,7 +54,7 @@ export default function ActionBtns({
   }, [userId, threadID]);
 
   return (
-    <div style={{ position: "relative" }}>
+    <div>
       <div className="action-container">
         {liked ? (
           <div className="like-container">
@@ -81,8 +84,22 @@ export default function ActionBtns({
           />
         </div>
       </div>
-
-      {showCommentBox ? (
+      <ModalComponent
+        setIsModalOpen={setIsModalOpen}
+        title="Add a Comment.."
+        showCommentBox={showCommentBox}
+        setShowCommentBox={setShowCommentBox}
+      >
+        <div className="comment-input">
+          <Input
+            value={reply}
+            handleInput={getReplies}
+            placeholder="Add a Reply.."
+          />
+          <CommonButton onClick={addComment} PlusOutlined={<PlusOutlined />} />
+        </div>
+      </ModalComponent>
+      {/* {showCommentBox ? (
         <>
           <div className="comment-input">
             <Input
@@ -116,7 +133,7 @@ export default function ActionBtns({
         </>
       ) : (
         <></>
-      )}
+      )} */}
     </div>
   );
 }

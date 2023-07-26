@@ -7,6 +7,7 @@
 @import url("./Sass/Profile.scss");
 @import url("./Sass/Notification.scss");
 @import url("./Sass/ThreadDetails.scss");
+@import url("./Sass/Modal.scss");
 
 html,
 body {
@@ -19,7 +20,6 @@ body {
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #000000;
 
@@ -79,10 +79,10 @@ body {
 }
 
 .comment-input {
-  width: 400px;
-  padding-bottom: 30px;
+  width: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
   font-family: "Victor Mono", monospace;
 }
 
