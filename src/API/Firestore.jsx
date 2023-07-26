@@ -218,16 +218,13 @@ export const getCurrenProfileThreads = async (email, setCurrentThreads) => {
 };
 
 export const getNotifications = async (userId, setNotifications) => {
-  const getNotifQuery = query(
-    notificationCollection,
-    where("recipientUserId", "==", userId),
-    orderBy("timestamp", "desc")
-  );
-  onSnapshot(getNotifQuery, (response) => {
+  await onSnapshot(notificationCollection, (response) => {
     setNotifications(
-      response.docs.map((doc) => {
-        return { ...doc.data(), id: doc.id };
-      })
+      response.docs
+        .map((doc) => {
+          return { ...doc.data(), id: doc.id };
+        })
+        .filter((doc) => doc.recipientUserId === userId)
     );
   });
 };

@@ -8,7 +8,7 @@ export default function useFetchNotifications() {
   const [isLoading, setLoading] = useState(false);
   const [isError, setError] = useState(false);
 
-  const fetchNotifications = async () => {
+  const fetchNotifications = () => {
     setLoading(true);
     try {
       getNotifications(currentUser[0].id, setNotifications);

@@ -44,8 +44,10 @@ export default function ActionBtns({
   };
 
   useEffect(() => {
-    getLikesByUser(userId, threadID, setLiked, setLikesCount);
-    getAllReplies(threadID, setReplies);
+    return () => {
+      getLikesByUser(userId, threadID, setLiked, setLikesCount);
+      getAllReplies(threadID, setReplies);
+    };
   }, [userId, threadID]);
 
   return (
