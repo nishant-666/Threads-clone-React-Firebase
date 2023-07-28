@@ -73,32 +73,25 @@ export default function ActionBtns({
     <div>
       <div className="action-container">
         {liked ? (
-          <div className="like-container">
-            <AiFillHeart
-              className="react-icon"
-              fill="#f44336"
-              size={30}
-              onClick={handleLike}
-            />
-            <p>{likesCount}</p>
-          </div>
+          <AiFillHeart
+            className="react-icon"
+            fill="#f44336"
+            size={30}
+            onClick={handleLike}
+          />
         ) : (
-          <div className="like-container">
-            <AiOutlineHeart
-              className="react-icon"
-              size={30}
-              onClick={handleLike}
-            />
-            <p>{likesCount}</p>
-          </div>
-        )}
-        <div className="comment-box">
-          <AiOutlineComment
-            onClick={() => setShowCommentBox(!showCommentBox)}
+          <AiOutlineHeart
             className="react-icon"
             size={30}
+            onClick={handleLike}
           />
-        </div>
+        )}
+
+        <AiOutlineComment
+          onClick={() => setShowCommentBox(!showCommentBox)}
+          className="react-icon"
+          size={30}
+        />
       </div>
       <div className="count" onClick={openReplies}>
         <div>
