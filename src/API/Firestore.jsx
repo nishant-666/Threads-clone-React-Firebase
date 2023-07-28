@@ -108,6 +108,7 @@ export const postReplies = async (
     addDoc(repliesRef, {
       threadID,
       reply,
+      userId,
       timeStamp,
       name: currentUserName,
     });

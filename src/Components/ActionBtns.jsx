@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineHeart, AiOutlineComment, AiFillHeart } from "react-icons/ai";
 import { likeThread, getLikesByUser } from "../API/Firestore";
 
@@ -8,6 +8,9 @@ import Input from "./Common/Input";
 import { getCurrentTimeStamp } from "../Helpers/useMoment";
 import { postReplies, getAllReplies } from "../API/Firestore";
 import ModalComponent from "./Common/Modal";
+import { useNavigate } from "react-router-dom";
+import { getUserByID } from "../API/Firestore";
+import RepliesIcon from "./RepliesIcon";
 
 export default function ActionBtns({
   userId,
@@ -16,12 +19,13 @@ export default function ActionBtns({
   threadID,
   currentUserName,
 }) {
+  let navigate = useNavigate();
   const [liked, setLiked] = useState(false);
   const [likesCount, setLikesCount] = useState(0);
   const [showCommentBox, setShowCommentBox] = useState(false);
   const [reply, setReply] = useState("");
   const [replies, setReplies] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentProfile, setCurrentProfile] = useState({});
   const handleLike = () => {
     likeThread(userId, recipientUserId, threadData, threadID, liked);
   };
@@ -43,7 +47,15 @@ export default function ActionBtns({
     );
     setReply("");
     setShowCommentBox(false);
-    setIsModalOpen(false);
+  };
+
+  const openReplies = () => {
+    navigate("/replies", {
+      state: {
+        replies,
+        userId,
+      },
+    });
   };
 
   useEffect(() => {
@@ -52,6 +64,10 @@ export default function ActionBtns({
       getAllReplies(threadID, setReplies);
     };
   }, [userId, threadID]);
+
+  useEffect(() => {
+    getUserByID(userId, setCurrentProfile);
+  }, [userId]);
 
   return (
     <div>
@@ -84,8 +100,28 @@ export default function ActionBtns({
           />
         </div>
       </div>
+      <div className="count" onClick={openReplies}>
+        <div>
+          {replies.map((reply) => (
+            <div className="reply-head">
+              <RepliesIcon userId={reply.userId} />
+            </div>
+          ))}
+        </div>
+        <div className="reply-count">
+          {replies.length !== 0
+            ? replies.length === 1
+              ? `${replies.length} Reply `
+              : `${replies.length} Replies `
+            : ""}
+          {likesCount !== 0
+            ? likesCount === 1
+              ? ` • ${likesCount} Like`
+              : ` • ${likesCount} Likes`
+            : ""}
+        </div>
+      </div>
       <ModalComponent
-        setIsModalOpen={setIsModalOpen}
         title="Add a Comment.."
         showCommentBox={showCommentBox}
         setShowCommentBox={setShowCommentBox}
@@ -99,41 +135,6 @@ export default function ActionBtns({
           <CommonButton onClick={addComment} PlusOutlined={<PlusOutlined />} />
         </div>
       </ModalComponent>
-      {/* {showCommentBox ? (
-        <>
-          <div className="comment-input">
-            <Input
-              value={reply}
-              handleInput={getReplies}
-              placeholder="Add a Reply.."
-            />
-            {reply.length === 0 ? (
-              <></>
-            ) : (
-              <CommonButton
-                onClick={addComment}
-                PlusOutlined={<PlusOutlined />}
-              />
-            )}
-          </div>
-          {replies.length > 0 ? (
-            replies.map((comment, index) => {
-              return (
-                <div className="all-replies" key={index}>
-                  <p className="reply-name">{comment.name}</p>
-                  <p className="comment">{comment.reply}</p>
-
-                  <p className="reply-timestamp">{comment.timeStamp}</p>
-                </div>
-              );
-            })
-          ) : (
-            <></>
-          )}
-        </>
-      ) : (
-        <></>
-      )} */}
     </div>
   );
 }

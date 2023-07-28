@@ -10,7 +10,7 @@ const ModalComponent = ({
   const handleCancel = () => {
     setShowCommentBox(false);
   };
-  console.log(showCommentBox);
+
   // useEffect(() => {
   //   setIsModalOpen(showCommentBox);
   // }, [showCommentBox]);

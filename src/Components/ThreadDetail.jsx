@@ -17,6 +17,7 @@ export default function ThreadDetail() {
     getUserByEmail(singleThread?.email, setCurrentProfile);
   }, [singleThread?.email]);
 
+  let { name, profileImage } = currentProfile[0] ?? [];
   if (isLoading) return <Spinner />;
   else {
     // if (!singleThread?.threadData.length)
@@ -31,52 +32,20 @@ export default function ThreadDetail() {
           />
           <p>Thread</p>
         </div>
-
-        {singleThread?.threadData?.length === 1 ? (
-          <div className="thread-card">
-            <div className="thread-header">
-              <div className="thread-meta">
-                {currentProfile[0]?.profileImage ? (
-                  <img
-                    className="thread-currentimg"
-                    src={currentProfile[0]?.profileImage}
-                  />
-                ) : (
-                  <></>
-                )}
-                <h3>{currentProfile[0]?.name}</h3>
-              </div>
-            </div>
-            <div className="thread-content">
-              <p>{singleThread?.threadData}</p>
-
-              <p className="thread-timestamp">
-                {formatTime(singleThread?.timestamp)}
-              </p>
-            </div>
-          </div>
-        ) : (
-          singleThread?.threadData?.map((thread) => (
-            <div className="thread-card">
-              <div className="thread-header">
-                <div className="thread-meta">
-                  <img
-                    className="thread-currentimg"
-                    src={currentProfile[0]?.profileImage}
-                  />
-                  <h3>{currentProfile[0]?.name}</h3>
+        <div className="thread-card">
+          <div className="description">
+            {singleThread?.threadData?.map((thread) => (
+              <div className="flex JC-SB" key={thread.id}>
+                <img className="thread-user-image" src={profileImage} />
+                <div>
+                  <p className="name">{name}</p>
+                  <p className="timestamp">{formatTime(thread.timestamp)}</p>
+                  <p key={thread.id}>{thread}</p>
                 </div>
               </div>
-              <div className="thread-content">
-                <p className="thread-thread">{thread}</p>
-
-                <p className="thread-timestamp">
-                  {formatTime(singleThread?.timestamp)}
-                </p>
-              </div>
-            </div>
-          ))
-        )}
+            ))}
+          </div>
+        </div>
       </div>
     ) : (
       <></>

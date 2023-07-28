@@ -6,11 +6,12 @@ export default function Input({
   handleInput,
   value,
   type,
+  className = "common-input",
 }) {
   return (
     <div>
       <input
-        className="common-input"
+        className={className}
         placeholder={placeholder}
         name={name}
         onChange={handleInput}

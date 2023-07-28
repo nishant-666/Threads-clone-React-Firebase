@@ -8,6 +8,8 @@
 @import url("./Sass/Notification.scss");
 @import url("./Sass/ThreadDetails.scss");
 @import url("./Sass/Modal.scss");
+@import url("./Sass/ActionBtn.scss");
+@import url("./Sass/Replies.scss");
 
 html,
 body {
@@ -35,8 +37,13 @@ body {
 }
 
 .JC-SB {
-  gap: 50px;
+  gap: 20px;
   justify-content: space-between;
+}
+
+.JC-FC {
+  gap: 20px;
+  flex-direction: column;
 }
 
 .react-icon {
@@ -59,52 +66,6 @@ body {
 
 .divider {
   background-color: rgb(31, 31, 31);
-}
-
-.action-container {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.like-container {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: "Victor Mono", monospace;
-}
-
-.comment-box {
-  position: relative;
-}
-
-.comment-input {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: "Victor Mono", monospace;
-}
-
-.all-replies {
-  width: 550px;
-  border: 1px solid #212121;
-  padding-left: 20px;
-  padding-bottom: 10px;
-  .reply-name {
-    font-family: "Victor Mono", monospace;
-    font-size: 15px;
-  }
-
-  .comment {
-    font-family: "Victor Mono", monospace;
-    font-size: 13px;
-  }
-
-  .reply-timestamp {
-    font-family: "Victor Mono", monospace;
-    font-size: 13px;
-  }
 }
 
 .spinner {

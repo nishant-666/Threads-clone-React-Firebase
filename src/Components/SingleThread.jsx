@@ -34,22 +34,22 @@ export default function SingleThread({ thread }) {
   return (
     <>
       <div className="thread-card">
-        <img className="thread-user-image" src={currentProfile?.profileImage} />
-        <div>
-          <div className="flex JC-SB">
-            <div>
-              <p onClick={openThread} className="name">
-                {currentProfile.name}
-              </p>
-              <p className="timestamp">{formatTime(thread.timestamp)}</p>
+        <div className="description">
+          {thread.threadData.map((singleThread, index) => (
+            <div className="flex JC-SB" key={index}>
+              <img
+                className="thread-user-image"
+                src={currentProfile?.profileImage}
+              />
+              <div>
+                <p onClick={openThread} className="name">
+                  {currentProfile.name}
+                </p>
+                <p className="timestamp">{formatTime(thread.timestamp)}</p>
+                <p key={singleThread.id}>{singleThread}</p>
+              </div>
             </div>
-          </div>
-          <div className="description">
-            {thread.threadData.map((thread, index) => (
-              <p key={index}>{thread}</p>
-            ))}
-          </div>
-
+          ))}
           <div className="action-btns">
             <ActionBtns
               userId={currentUserID}

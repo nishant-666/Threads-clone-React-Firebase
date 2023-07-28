@@ -29,7 +29,7 @@
 }
 
 .thread-icon-container {
-  margin-top: 30px;
+  // margin-top: 30px;
   .thread-icon {
     width: 100px;
   }
@@ -42,18 +42,19 @@
   gap: 25px;
   cursor: pointer;
   .name {
-    font-size: 1.4rem;
+    font-size: 1.1rem;
+    margin-top: 25px;
   }
   .thread-user-image {
-    width: 4rem;
-    height: 4rem;
+    width: 2rem;
+    height: 2rem;
     object-fit: cover;
     border-radius: 50%;
     margin-top: 25px;
   }
   .timestamp {
-    font-size: 0.8rem;
-    margin-top: -18px;
+    font-size: 0.9rem;
+    margin-top: -15px;
   }
 
   .name,
@@ -63,9 +64,7 @@
 
   .description {
     margin-top: -10px;
-    font-family: "Victor Mono", monospace;
-    font-size: 1rem;
-    max-width: 200px;
+    font-size: 0.9rem;
     word-wrap: break-word;
   }
 
@@ -74,10 +73,11 @@
     margin-left: -15px;
     position: absolute;
   }
+}
 
-  .action-btns {
-    display: flex;
-    justify-content: space-between;
-    width: 15%;
-  }
+.action-btns {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 45px;
+  margin-top: -10px;
 }
